@@ -69,9 +69,11 @@ CREATE TABLE users_conversations (
 CREATE TABLE users_groups (
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    iusers_groups_id BIGSERIAL PRIMARY KEY NOT NULL,
+    users_groups_id BIGSERIAL PRIMARY KEY NOT NULL,
     user_id BIGINT NOT NULL,
-    group_id BIGINT NOT NULL
+    group_id BIGINT NOT NULL,
+    approved BOOLEAN DEFAULT false,
+    admin_status BOOLEAN DEFAULT false
 );
 
 CREATE OR REPLACE FUNCTION update_timestamp()
