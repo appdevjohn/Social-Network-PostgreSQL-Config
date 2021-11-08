@@ -54,6 +54,7 @@ CREATE TABLE groups (
     updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
     group_id BIGSERIAL PRIMARY KEY NOT NULL,
     name VARCHAR(128) NOT NULL,
+    description VARCHAR(128) NOT NULL,
     UNIQUE(name)
 );
 
