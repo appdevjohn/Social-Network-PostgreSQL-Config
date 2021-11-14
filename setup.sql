@@ -27,7 +27,7 @@ CREATE TABLE messages (
     user_id BIGINT NOT NULL,
     convo_id BIGINT,
     post_id BIGINT,
-    content VARCHAR(1024) NOT NULL,
+    content VARCHAR(4096) NOT NULL,
     type content_type NOT NULL
 );
 
@@ -38,7 +38,7 @@ CREATE TABLE posts (
     user_id BIGINT NOT NULL,
     group_id BIGINT NOT NULL,
     title VARCHAR(128) NOT NULL,
-    text VARCHAR(1024),
+    text VARCHAR(4096),
     media VARCHAR(128)
 );
 
@@ -54,7 +54,7 @@ CREATE TABLE groups (
     updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
     group_id BIGSERIAL PRIMARY KEY NOT NULL,
     name VARCHAR(128) NOT NULL,
-    description VARCHAR(128) NOT NULL,
+    description VARCHAR(4096) NOT NULL,
     UNIQUE(name)
 );
 
