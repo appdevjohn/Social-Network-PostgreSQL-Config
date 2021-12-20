@@ -1,8 +1,8 @@
 CREATE TYPE content_type AS ENUM ('text', 'image');
 
 CREATE TABLE users (
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
     user_id BIGSERIAL PRIMARY KEY NOT NULL,
     socket_id VARCHAR(32),
     first_name VARCHAR(64) NOT NULL,
@@ -13,16 +13,16 @@ CREATE TABLE users (
     hashed_password VARCHAR(128) NOT NULL,
     activated BOOLEAN NOT NULL DEFAULT false,
     activate_token VARCHAR(128),
-    activate_token_timestamp TIMESTAMP NOT NULL DEFAULT NOW(),
+    activate_token_timestamp TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
     reset_password_token VARCHAR(128),
-    reset_password_token_timestamp TIMESTAMP NOT NULL DEFAULT NOW(),
+    reset_password_token_timestamp TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
     UNIQUE(email),
     UNIQUE(username)
 );
 
 CREATE TABLE messages (
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
     message_id BIGSERIAL PRIMARY KEY NOT NULL,
     user_id BIGINT NOT NULL,
     convo_id BIGINT,
@@ -32,8 +32,8 @@ CREATE TABLE messages (
 );
 
 CREATE TABLE posts (
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
     post_id BIGSERIAL PRIMARY KEY NOT NULL,
     user_id BIGINT NOT NULL,
     group_id BIGINT NOT NULL,
@@ -43,15 +43,15 @@ CREATE TABLE posts (
 );
 
 CREATE TABLE conversations (
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
     convo_id BIGSERIAL PRIMARY KEY NOT NULL,
     name VARCHAR(128) NOT NULL
 );
 
 CREATE TABLE groups (
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
     group_id BIGSERIAL PRIMARY KEY NOT NULL,
     name VARCHAR(128) NOT NULL,
     description VARCHAR(4096) NOT NULL,
@@ -59,8 +59,8 @@ CREATE TABLE groups (
 );
 
 CREATE TABLE users_conversations (
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
     users_conversations_id BIGSERIAL PRIMARY KEY NOT NULL,
     user_id BIGINT NOT NULL,
     convo_id BIGINT NOT NULL,
@@ -68,8 +68,8 @@ CREATE TABLE users_conversations (
 );
 
 CREATE TABLE users_groups (
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
     users_groups_id BIGSERIAL PRIMARY KEY NOT NULL,
     user_id BIGINT NOT NULL,
     group_id BIGINT NOT NULL,
