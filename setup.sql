@@ -74,7 +74,8 @@ CREATE TABLE users_groups (
     user_id BIGINT NOT NULL,
     group_id BIGINT NOT NULL,
     approved BOOLEAN DEFAULT false,
-    admin_status BOOLEAN DEFAULT false
+    admin_status BOOLEAN DEFAULT false,
+    CONSTRAINT users_groups_status UNIQUE(user_id, group_id)
 );
 
 CREATE OR REPLACE FUNCTION update_timestamp()
